@@ -23,3 +23,7 @@ Route::get('/user/{id}', 'App\Http\Controllers\UserController@show');
 Route::post('/user', 'App\Http\Controllers\UserController@store');
 Route::put('/user/{id}', 'App\Http\Controllers\UserController@update');
 Route::delete('/user/{id}', 'App\Http\Controllers\UserController@delete');
+Route::fallback(function(){
+    return response()->json([ //url打錯，找不到介面顯示錯誤訊息:Nothing!!
+        'message' => 'Nothing !! / Position Wrong!!'],404);
+});
